@@ -5,7 +5,7 @@
 #ifndef TRYINGOUTSDL_BODYLINK_H
 #define TRYINGOUTSDL_BODYLINK_H
 
-#include "../utils/Structs.h"
+#include "../utils/Utils.h"
 
 class BodyLink {
 private:

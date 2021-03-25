@@ -5,8 +5,8 @@
 #ifndef TRYINGOUTSDL_AUTOUPDATED_H
 #define TRYINGOUTSDL_AUTOUPDATED_H
 
+#include "../utils/Utils.h"
 #include <thread>
-#include <unistd.h>
 
 using namespace std;
 

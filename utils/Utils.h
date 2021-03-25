@@ -5,6 +5,12 @@
 #ifndef TRYINGOUTSDL_STRUCTS_H
 #define TRYINGOUTSDL_STRUCTS_H
 
+#include <chrono>
+#include <thread>
+
+void m_sleep(unsigned int m_seconds);
+
+/* Structs */
 struct Location{
     int x;
     int y;

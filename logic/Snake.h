@@ -7,10 +7,10 @@
 
 #include "SDL2/SDL.h"
 #include "AutoUpdated.h"
-#include "../utils/Structs.h"
+#include "../utils/Utils.h"
 #include "BodyLink.h"
 
-#define UPDATE_INTERVAL_MILLISECONDS 100 * 1e5
+#define UPDATE_INTERVAL_MILLISECONDS 100
 
 class Snake : public AutoUpdated {
 private:

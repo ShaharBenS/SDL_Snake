@@ -1,5 +1,4 @@
 #include <iostream>
-#include <unistd.h>
 #include "SDL2/SDL.h"
 #include "logic/Snake.h"
 

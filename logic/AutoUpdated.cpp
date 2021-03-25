@@ -14,7 +14,7 @@ void AutoUpdated::StartUpdating() {
 
 void AutoUpdated::Run() {
     while(this->ShouldUpdate){
-        usleep(this->UpdateInterval);
+        m_sleep(this->UpdateInterval);
         this->Update();
     }
 }
