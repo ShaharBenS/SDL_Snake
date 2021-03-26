@@ -14,8 +14,6 @@ void FoodSpawner::SpawnFood() {
                     random_int(boundaries.top, boundaries.bottom)
             }
     ));
-    std::cout<< this->currentFood->FoodLocation.x << endl;
-    std::cout<< this->currentFood->FoodLocation.y << endl;
 }
 
 const Food* FoodSpawner::getCurrentFood() const {
