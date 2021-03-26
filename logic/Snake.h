@@ -8,32 +8,30 @@
 #include "SDL2/SDL.h"
 #include "AutoUpdated.h"
 #include "../utils/Utils.h"
-#include "BodyLink.h"
+#include "../utils/Consts.h"
+#include "../utils/Link.h"
+#include "../utils/Bounded.h"
+#include "FoodSpawner.h"
 
-#define UPDATE_INTERVAL_MILLISECONDS 100
-
-class Snake : public AutoUpdated {
+class Snake : public AutoUpdated, public Bounded {
 private:
-    Size GridSize{};
     int Length;
-    BodyLink *HeadLink;
-    BodyLink *TailLink;
+    bool DirectionChanged; // This flag ensures that the snake direction can be changed only once per update
+    Link<Location> *HeadLink;
+    Link<Location> *TailLink;
     Direction CurrentDirection;
-
+    FoodSpawner * foodSpawner;
 
 public:
-    Snake(int gridVerticalSize, int gridHorizontalSize);
+    Snake(Boundaries boundaries, FoodSpawner * foodSpawner);
     ~Snake();
     void StartMoving();
     void ChangeDirection(Direction direction);
-    struct Size GetGridSize();
 
-    const BodyLink* getHeadLink() const;
-
-    const BodyLink* getTailLink() const;
+    const Link<Location>* getHeadLink() const;
+    const Link<Location>* getTailLink() const;
 
     void Update() override;
-
 };
 
 

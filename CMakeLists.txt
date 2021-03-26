@@ -14,7 +14,7 @@ find_package(Threads REQUIRED)
 
 
 message("-- Adding Executable")
-add_executable(${PROJECT_NAME} main.cpp logic/AutoUpdated.cpp logic/BodyLink.cpp logic/Snake.cpp screen/EventHandler.cpp screen/Renderer.cpp utils/Utils.cpp)
+add_executable(${PROJECT_NAME} main.cpp logic/AutoUpdated.cpp logic/Snake.cpp screen/EventHandler.cpp screen/SnakeRenderer.cpp utils/Utils.cpp utils/Consts.h utils/Link.h logic/FoodSpawner.cpp logic/FoodSpawner.h utils/Bounded.cpp utils/Bounded.h screen/FoodRenderer.cpp screen/FoodRenderer.h)
 
 
 message(-- Linking)

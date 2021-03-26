@@ -6,8 +6,12 @@
 #define TRYINGOUTSDL_EVENTHANDLER_H
 
 
-class EventHandler {
+#include "SnakeRenderer.h"
 
+class EventHandler {
+public:
+    static int EventFilter(void * userData,  SDL_Event *sdlEvent);
+    static void HandleEvent(SDL_Event * sdlEvent, Snake * snake);
 };
 
 

@@ -6,16 +6,16 @@
 #define TRYINGOUTSDL_RENDERER_H
 
 #include "SDL2/SDL.h"
+#include "../logic/Snake.h"
 
-class Renderer {
+class SnakeRenderer {
 private:
+    Snake * theSnake;
     SDL_Renderer * renderer;
-    void RenderFrame();
-    void MainLoop();
 
 public:
-    Renderer(SDL_Renderer * renderer);
-    void StartRendering();
+    SnakeRenderer(SDL_Renderer * renderer, Snake * snake);
+    void RenderSnake();
 };
 
 

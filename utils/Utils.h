@@ -7,25 +7,10 @@
 
 #include <chrono>
 #include <thread>
+#include <random>
 
 void m_sleep(unsigned int m_seconds);
 
-/* Structs */
-struct Location{
-    int x;
-    int y;
-};
-
-struct Size{
-    int w;
-    int h;
-};
-
-enum Direction{
-    UP,
-    DOWN,
-    RIGHT,
-    LEFT
-};
+int random_int(int a, int b);
 
 #endif //TRYINGOUTSDL_STRUCTS_H

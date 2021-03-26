@@ -4,40 +4,52 @@
 
 #include "Snake.h"
 
-Snake::Snake(int gridVerticalSize, int gridHorizontalSize) : AutoUpdated(UPDATE_INTERVAL_MILLISECONDS) {
+Snake::Snake(Boundaries boundaries, FoodSpawner *foodSpawner) : AutoUpdated(SNAKE_UPDATE_INTERVAL_MILLISECONDS),
+                                                                Bounded(boundaries), foodSpawner(foodSpawner) {
     this->Length = 1;
-    this->GridSize = {gridVerticalSize, gridHorizontalSize};
     this->CurrentDirection = Direction::DOWN;
 
-    this->HeadLink = new BodyLink(Location({gridVerticalSize / 2, gridHorizontalSize / 2}));
-    this->TailLink = new BodyLink({gridVerticalSize / 2, gridHorizontalSize / 2 + 1});
+    Location startingLocation = Location(
+            {(boundaries.right - boundaries.left) / 2, (boundaries.bottom - boundaries.top) / 4});
+    this->HeadLink = new Link<Location>(startingLocation);
+    startingLocation.y--;
+    this->TailLink = new Link<Location>(startingLocation);
     this->TailLink->setNextLink(this->HeadLink);
+    this->DirectionChanged = false;
 }
 
 Snake::~Snake() {
-    this->StopUpdating();
-    auto * current = this->TailLink;
-    do{
-        auto * toDelete = current;
+    auto *current = this->TailLink;
+    do {
+        auto *toDelete = current;
         current = current->getNextLink();
         delete toDelete;
-    }
-    while(current != nullptr);
+    } while (current != nullptr);
 }
 
 void Snake::ChangeDirection(Direction direction) {
-    this->CurrentDirection = direction;
-}
-
-Size Snake::GetGridSize() {
-    return this->GridSize;
+    if (this->CurrentDirection + direction != 0 && !DirectionChanged) {
+        this->CurrentDirection = direction;
+        DirectionChanged = true;
+    }
 }
 
 void Snake::Update() {
-    Location prevHeadLocation = this->getHeadLink()->getLinkLocation();
+    DirectionChanged = false;
+    Location prevHeadLocation = this->getHeadLink()->getData();
 
     // Updating Body links
-    BodyLink * nextTail = this->TailLink->getNextLink();
+    Link<Location> *nextTail;
+
+    // Copying current tail if head is on food
+    if(this->HeadLink->getData() == foodSpawner->getCurrentFood()->FoodLocation) {
+        nextTail = new Link<Location>(*this->TailLink);
+        this->foodSpawner->SpawnFood();
+    }
+    else{
+        nextTail = this->TailLink->getNextLink();
+    }
+
     this->TailLink->setNextLink(nullptr);
     this->HeadLink->setNextLink(this->TailLink);
     this->HeadLink = this->TailLink;
@@ -45,7 +57,7 @@ void Snake::Update() {
 
     // Updating new head Location
     Location newLocation = prevHeadLocation;
-    switch(this->CurrentDirection){
+    switch (this->CurrentDirection) {
         case UP:
             newLocation.y--;
             break;
@@ -59,17 +71,18 @@ void Snake::Update() {
             newLocation.x--;
             break;
     }
-    this->HeadLink->setLinkLocation(newLocation);
+    this->HeadLink->setData(newLocation);
+
 }
 
-const BodyLink* Snake::getHeadLink() const {
+const Link<Location> *Snake::getHeadLink() const {
     return HeadLink;
 }
 
-const BodyLink* Snake::getTailLink() const {
+const Link<Location> *Snake::getTailLink() const {
     return TailLink;
 }
 
-void Snake::StartMoving(){
+void Snake::StartMoving() {
     this->StartUpdating();
 }
