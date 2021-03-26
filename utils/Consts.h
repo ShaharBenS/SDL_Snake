@@ -17,11 +17,6 @@ inline bool operator==(const Location &loc1, const Location &loc2){
     return loc1.x == loc2.x && loc1.y == loc2.y;
 }
 
-struct Size{
-    int w;
-    int h;
-};
-
 struct Boundaries{
     int top;
     int bottom;

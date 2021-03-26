@@ -6,7 +6,6 @@
 
 Snake::Snake(Boundaries boundaries, FoodSpawner *foodSpawner) : AutoUpdated(SNAKE_UPDATE_INTERVAL_MILLISECONDS),
                                                                 Bounded(boundaries), foodSpawner(foodSpawner) {
-    this->Length = 1;
     this->CurrentDirection = Direction::DOWN;
 
     Location startingLocation = Location(

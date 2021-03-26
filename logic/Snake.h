@@ -15,7 +15,6 @@
 
 class Snake : public AutoUpdated, public Bounded {
 private:
-    int Length;
     bool DirectionChanged; // This flag ensures that the snake direction can be changed only once per update
     Link<Location> *HeadLink;
     Link<Location> *TailLink;

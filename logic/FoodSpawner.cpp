@@ -4,7 +4,6 @@
 
 #include "FoodSpawner.h"
 
-#include <iostream>
 FoodSpawner::FoodSpawner(Boundaries boundaries) : Bounded(boundaries) {}
 
 void FoodSpawner::SpawnFood() {
