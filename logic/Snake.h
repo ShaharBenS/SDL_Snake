@@ -5,7 +5,7 @@
 #ifndef TRYINGOUTSDL_SNAKE_H
 #define TRYINGOUTSDL_SNAKE_H
 
-#include "SDL2/SDL.h"
+#include "SDL.h"
 #include "AutoUpdated.h"
 #include "../utils/Utils.h"
 #include "../utils/Consts.h"

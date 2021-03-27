@@ -5,7 +5,7 @@
 #ifndef SDL_SNAKE_FOODRENDERER_H
 #define SDL_SNAKE_FOODRENDERER_H
 
-#include "SDL2/SDL.h"
+#include "SDL.h"
 #include "../logic/FoodSpawner.h"
 
 class FoodRenderer {

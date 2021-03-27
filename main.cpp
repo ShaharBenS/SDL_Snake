@@ -1,5 +1,5 @@
 #include <iostream>
-#include "SDL2/SDL.h"
+#include "SDL.h"
 #include "logic/Snake.h"
 #include "screen/EventHandler.h"
 #include "logic/FoodSpawner.h"

@@ -5,7 +5,7 @@
 #ifndef TRYINGOUTSDL_RENDERER_H
 #define TRYINGOUTSDL_RENDERER_H
 
-#include "SDL2/SDL.h"
+#include "SDL.h"
 #include "../logic/Snake.h"
 
 class SnakeRenderer {
